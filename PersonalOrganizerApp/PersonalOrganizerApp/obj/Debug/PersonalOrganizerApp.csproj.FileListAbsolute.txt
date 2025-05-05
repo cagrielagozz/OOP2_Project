@@ -49,8 +49,8 @@ C:\Users\Asus\Desktop\OOP2_1\PersonalOrganizerApp\PersonalOrganizerApp\obj\Debug
 C:\Users\Asus\Desktop\OOP2_1\PersonalOrganizerApp\PersonalOrganizerApp\obj\Debug\PersonalOrganizerApp.UpdateReminderForm.resources
 C:\Users\Asus\Desktop\OOP2_1\PersonalOrganizerApp\PersonalOrganizerApp\bin\Debug\reminder.csv
 C:\Users\Asus\Desktop\OOP2_1\PersonalOrganizerApp\PersonalOrganizerApp\bin\Debug\user_salary_data.csv
-C:\Users\Asus\Desktop\OOP2_Project\PersonalOrganizerApp\PersonalOrganizerApp\bin\Debug\reminder.csv
-C:\Users\Asus\Desktop\OOP2_Project\PersonalOrganizerApp\PersonalOrganizerApp\bin\Debug\user_salary_data.csv
 C:\Users\Asus\Desktop\OOP2_Project\PersonalOrganizerApp\PersonalOrganizerApp\obj\Debug\PersonalOrganizerApp.AddReminderForm.resources
 C:\Users\Asus\Desktop\OOP2_Project\PersonalOrganizerApp\PersonalOrganizerApp\obj\Debug\PersonalOrganizerApp.PersonalInformation.resources
 C:\Users\Asus\Desktop\OOP2_Project\PersonalOrganizerApp\PersonalOrganizerApp\obj\Debug\PersonalOrganizerApp.UpdateReminderForm.resources
+C:\Users\Asus\Desktop\OOP2_Project\PersonalOrganizerApp\PersonalOrganizerApp\obj\Debug\PersonalOrganizerApp.Form1.resources
+C:\Users\Asus\Desktop\OOP2_project\PersonalOrganizerApp\PersonalOrganizerApp\bin\Debug\CSV\reminder.csv
