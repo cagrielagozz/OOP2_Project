@@ -153,7 +153,7 @@
             // 
             // btnCalculate
             // 
-            this.btnCalculate.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnCalculate.BackColor = System.Drawing.SystemColors.Window;
             this.btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnCalculate.Location = new System.Drawing.Point(609, 423);
             this.btnCalculate.Name = "btnCalculate";
