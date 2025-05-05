@@ -8,10 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace PersonalOrganizerApp
 {
+
     public partial class SalaryCalculatorForm : Form
     {
+        // Initialize the form
         public SalaryCalculatorForm()
         {
             InitializeComponent();
@@ -21,43 +24,47 @@ namespace PersonalOrganizerApp
         {
             SalaryCsvManager.InitializeCsv();
 
-            // 1. ComboBox verilerini doldur
+            // Fill the first ComboBox data(experience)
             cmbExperience.Items.AddRange(new string[] {
-        "2-4 yıl", "5-9 yıl", "10-14 yıl", "15-20 yıl", "20 yıl üstü"
-    });
+                "2-4 yıl", "5-9 yıl", "10-14 yıl", "15-20 yıl", "20 yıl üstü"
+        });
 
+            // Fill the second ComboBox data(city)
             string[] cities = {
-        "İstanbul", "Ankara", "İzmir", "Kocaeli", "Sakarya", "Düzce",
-        "Bolu", "Yalova", "Edirne", "Kırklareli", "Tekirdağ", "Trabzon",
-        "Ordu", "Giresun", "Rize", "Artvin", "Gümüşhane", "Bursa", "Eskişehir",
-        "Bilecik", "Aydın", "Denizli", "Muğla", "Adana", "Mersin", "Balıkesir",
-        "Çanakkale", "Antalya", "Isparta", "Burdur"
-    };
+                "İstanbul", "Ankara", "İzmir", "Kocaeli", "Sakarya", "Düzce",
+                "Bolu", "Yalova", "Edirne", "Kırklareli", "Tekirdağ", "Trabzon",
+                "Ordu", "Giresun", "Rize", "Artvin", "Gümüşhane", "Bursa", "Eskişehir",
+                "Bilecik", "Aydın", "Denizli", "Muğla", "Adana", "Mersin", "Balıkesir",
+                "Çanakkale", "Antalya", "Isparta", "Burdur"
+        };
             cmbCity.Items.AddRange(cities);
 
+            // Fill the third ComboBox data(education)
             cmbEducation.Items.AddRange(new string[] {
-        "Meslekle ilgili Yüksek Lisans",
-        "Meslekle ilgili Doktora",
-        "Meslekle ilgili Doçentlik",
-        "İlgisiz Yüksek Lisans",
-        "İlgisiz Doktora/Doçentlik"
-    });
+                "Meslekle ilgili Yüksek Lisans",
+                "Meslekle ilgili Doktora",
+                "Meslekle ilgili Doçentlik",
+                "İlgisiz Yüksek Lisans",
+                "İlgisiz Doktora/Doçentlik"
+        });
 
+            // Fill the fourth ComboBox data(management role)
             cmbManagementRole.Items.AddRange(new string[] {
-        "Takım Lideri/Grup Yöneticisi/Teknik Yönetici/Yazılım Mimarı",
-        "Proje Yöneticisi",
-        "Direktör/Projeler Yöneticisi",
-        "CTO/Genel Müdür",
-        "Bilgi İşlem Sorumlusu/Müdürü (≤ 5 personel)",
-        "Bilgi İşlem Sorumlusu/Müdürü (> 5 personel)"
-    });
+                "Takım Lideri/Grup Yöneticisi/Teknik Yönetici/Yazılım Mimarı",
+                "Proje Yöneticisi",
+                "Direktör/Projeler Yöneticisi",
+                "CTO/Genel Müdür",
+                "Bilgi İşlem Sorumlusu/Müdürü (≤ 5 personel)",
+                "Bilgi İşlem Sorumlusu/Müdürü (> 5 personel)"
+        });
 
-            // 2. CSV'den veri yükle
-            string username = "user1"; // Giriş yapılmış kullanıcı
+            // Load the saved data for the logged-in user
+            string username = "user1";
             string[] data = SalaryCsvManager.LoadUserData(username);
 
             if (data != null)
             {
+                // Set the ComboBox selections based on the saved data
                 cmbExperience.SelectedItem = data[1];
                 cmbCity.SelectedItem = data[2];
                 cmbEducation.SelectedItem = data[3];
@@ -87,10 +94,11 @@ namespace PersonalOrganizerApp
         private void btnCalculate_Click(object sender, EventArgs e)
         {
 
-            double baseSalary = 26829; // BMO'ya göre 2023 Temmuz sonrası baz ücret
+            double baseSalary = 26829; // Base salary after July 2023 according to BMO
             double totalFactor = 0;
 
-            // Deneyim süresi katsayısı
+
+            // Experience factor
             switch (cmbExperience.SelectedItem?.ToString())
             {
                 case "2-4 yıl": totalFactor += 0.60; break;
@@ -100,7 +108,8 @@ namespace PersonalOrganizerApp
                 case "20 yıl üstü": totalFactor += 1.50; break;
             }
 
-            // Şehir katsayısı
+
+            // City factor
             string city = cmbCity.SelectedItem?.ToString();
             if (!string.IsNullOrEmpty(city))
             {
@@ -120,7 +129,8 @@ namespace PersonalOrganizerApp
                     totalFactor += cityCoefficients[city];
             }
 
-            // Yönetici Görevleri katsayısı
+
+            // Management role factor
             switch (cmbManagementRole.SelectedItem?.ToString())
             {
                 case "Takım Lideri/Grup Yöneticisi/Teknik Yönetici/Yazılım Mimarı": totalFactor += 0.50; break;
@@ -131,7 +141,8 @@ namespace PersonalOrganizerApp
                 case "Bilgi İşlem Sorumlusu/Müdürü (> 5 personel)": totalFactor += 0.60; break;
             }
 
-            // Eğitim düzeyi katsayısı
+
+            // Education factor
             switch (cmbEducation.SelectedItem?.ToString())
             {
                 case "Meslekle ilgili Yüksek Lisans": totalFactor += 0.10; break;
@@ -141,24 +152,31 @@ namespace PersonalOrganizerApp
                 case "İlgisiz Doktora/Doçentlik": totalFactor += 0.15; break;
             }
 
-            // Yabancı Dil Bilgisi
+
+            // English certificate factor
+            // English education factor
+            // Other language factors
             if (chkEnglishCert.Checked) totalFactor += 0.20;
             if (chkEnglishEdu.Checked) totalFactor += 0.20;
             if (chkOtherLang.Checked) totalFactor += 0.05;
 
-            // Eşi çalışmıyorsa
+
+            // Spouse works factor
             if (!chkSpouseWorks.Checked) totalFactor += 0.20;
 
-            // Çocuk katsayıları
+
+            // Children factors
             if (chkChild0_6.Checked) totalFactor += 0.20;
             if (chkChild7_18.Checked) totalFactor += 0.30;
             if (chkChildOver18.Checked) totalFactor += 0.40; // Etki etmiyor
 
-            // Hesapla
+
+            // Calculate the final salary
             double finalSalary = baseSalary * (1 + totalFactor);
             lblResult.Text = $"Calculated Salary: {finalSalary.ToString("C2")}";
 
-            // Geçici kullanıcı adı, ileride login sistemiyle değiştirilebilir
+
+            // Save the user data to the CSV file
             string username = "user1";
 
             SalaryCsvManager.SaveUserSalaryData(
@@ -176,7 +194,6 @@ namespace PersonalOrganizerApp
                 chkChildOver18.Checked,
                 finalSalary
             );
-
 
         }
     }

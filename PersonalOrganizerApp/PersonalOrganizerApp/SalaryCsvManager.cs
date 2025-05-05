@@ -7,9 +7,10 @@ namespace PersonalOrganizerApp
 {
     internal static class SalaryCsvManager
     {
+        // Path to the CSV file
         private static readonly string filePath = "user_salary_data.csv";
 
-        // CSV başlığını oluşturur (sadece bir kez çalışır)
+        // Create the CSV file if it doesn't exist
         public static void InitializeCsv()
         {
             if (!File.Exists(filePath))
@@ -19,6 +20,7 @@ namespace PersonalOrganizerApp
             }
         }
 
+        // Save user salary data to the CSV file
         public static void SaveUserSalaryData(
             string username,
             string experience,
@@ -35,18 +37,19 @@ namespace PersonalOrganizerApp
             double calculatedSalary
  )
         {
+            // Initialize the CSV file if it doesn't exist
             List<string> allLines = new List<string>();
 
             if (File.Exists(filePath))
                 allLines = File.ReadAllLines(filePath).ToList();
 
-            // Başlık satırı varsa koru
+            // If the file is empty, create a new one with headers
             string header = "Username,Experience,City,Education,ManagementRole,EnglishCert,EnglishEdu,OtherLang,SpouseWorks,Child0_6,Child7_18,ChildOver18,CalculatedSalary,Date";
 
-            // Varsa eski satırı sil
+            // If the file is empty, add headers
             allLines = allLines.Where(line => !line.StartsWith(username + ",")).ToList();
 
-            // Güncel satırı oluştur
+            // Create a new line with the user data
             string newLine = string.Join(",",
                 username,
                 experience,
@@ -64,14 +67,14 @@ namespace PersonalOrganizerApp
                 DateTime.Now.ToString("yyyy-MM-dd")
             );
 
-            // Header satırını başa ekle (eğer eksikse)
+            // Add the header line to the beginning (if missing)
             if (allLines.Count == 0 || !allLines[0].StartsWith("Username"))
                 allLines.Insert(0, header);
 
-            // Yeni satırı sona ekle
+            // Add newline to the end
             allLines.Add(newLine);
 
-            // Dosyaya yaz
+            // Write all lines back to the file
             File.WriteAllLines(filePath, allLines);
         }
         public static string[] LoadUserData(string username)
@@ -79,7 +82,7 @@ namespace PersonalOrganizerApp
             if (!File.Exists(filePath)) return null;
 
             string[] allLines = File.ReadAllLines(filePath);
-            for (int i = 1; i < allLines.Length; i++) // 0. satır başlık
+            for (int i = 1; i < allLines.Length; i++)
             {
                 string[] parts = allLines[i].Split(',');
                 if (parts.Length >= 14 && parts[0] == username)
@@ -87,7 +90,7 @@ namespace PersonalOrganizerApp
                     return parts;
                 }
             }
-            return null;
+            return null; // User not found
         }
 
     }
