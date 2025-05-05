@@ -70,8 +70,8 @@ namespace PersonalOrganizerApp
         }
         private void button1_Click(object sender, EventArgs e)
         {
-        /*    Form1 form1 = new Form1();
-            form1.Show();*/
+            Form1 form1 = new Form1();
+            form1.Show();
 
         }
 
@@ -130,12 +130,12 @@ namespace PersonalOrganizerApp
 
                 RefreshDataGrid();
 
-                /*Form1 form1 = new Form1();
+                Form1 form1 = new Form1();
                 if (dataParts.Length >= 5)
                 {
                     form1.SetTextBoxValues(dataParts[0], dataParts[1], dataParts[2], dataParts[3], dataParts[4], dataParts[5]);
                 }
-                form1.Show();*/
+                form1.Show();
             }
             else
             {
