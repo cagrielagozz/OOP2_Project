@@ -46,11 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddReminderForm.cs">
+    <Compile Include="Design\AddReminderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddReminderForm.Designer.cs">
+    <Compile Include="Design\AddReminderForm.Designer.cs">
       <DependentUpon>AddReminderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Design\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Design\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -58,76 +64,82 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NotesForm.cs">
+    <Compile Include="Models\ProfileCaretaker.cs" />
+    <Compile Include="Models\ProfileMemento.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Design\NotesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NotesForm.Designer.cs">
+    <Compile Include="Design\NotesForm.Designer.cs">
       <DependentUpon>NotesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PhoneBookForm.cs">
+    <Compile Include="Design\PhoneBookForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PhoneBookForm.Designer.cs">
+    <Compile Include="Design\PhoneBookForm.Designer.cs">
       <DependentUpon>PhoneBookForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PersonalInformation.cs">
+    <Compile Include="Design\PersonalInformation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PersonalInformation.Designer.cs">
+    <Compile Include="Design\PersonalInformation.Designer.cs">
       <DependentUpon>PersonalInformation.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReminderClasses\IReminder.cs" />
-    <Compile Include="ReminderClasses\IReminderFactory.cs" />
-    <Compile Include="ReminderClasses\IReminderObserver.cs" />
-    <Compile Include="ReminderClasses\MeetingReminder.cs" />
-    <Compile Include="ReminderClasses\MeetingReminderFactory.cs" />
-    <Compile Include="ReminderClasses\ReminderBase.cs" />
-    <Compile Include="ReminderClasses\ReminderCsvManager.cs" />
-    <Compile Include="ReminderClasses\ReminderNotifier.cs" />
-    <Compile Include="ReminderClasses\ReminderType.cs" />
-    <Compile Include="ReminderClasses\ShakeObserver.cs" />
-    <Compile Include="ReminderClasses\TaskReminder.cs" />
-    <Compile Include="ReminderClasses\TaskReminderFactory.cs" />
-    <Compile Include="ReminderForm.cs">
+    <Compile Include="Interfaces\IReminder.cs" />
+    <Compile Include="Factories\IReminderFactory.cs" />
+    <Compile Include="Interfaces\IReminderObserver.cs" />
+    <Compile Include="Models\MeetingReminder.cs" />
+    <Compile Include="Factories\MeetingReminderFactory.cs" />
+    <Compile Include="Models\ReminderBase.cs" />
+    <Compile Include="Design\ReminderCsvManager.cs" />
+    <Compile Include="Design\ReminderNotifier.cs" />
+    <Compile Include="Models\ReminderType.cs" />
+    <Compile Include="Design\ShakeObserver.cs" />
+    <Compile Include="Models\TaskReminder.cs" />
+    <Compile Include="Factories\TaskReminderFactory.cs" />
+    <Compile Include="Design\ReminderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReminderForm.Designer.cs">
+    <Compile Include="Design\ReminderForm.Designer.cs">
       <DependentUpon>ReminderForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SalaryCalculatorForm.cs">
+    <Compile Include="Design\SalaryCalculatorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SalaryCalculatorForm.Designer.cs">
+    <Compile Include="Design\SalaryCalculatorForm.Designer.cs">
       <DependentUpon>SalaryCalculatorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SalaryCsvManager.cs" />
-    <Compile Include="UpdateReminderForm.cs">
+    <Compile Include="Models\SalaryCsvManager.cs" />
+    <Compile Include="Design\UpdateReminderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateReminderForm.Designer.cs">
+    <Compile Include="Design\UpdateReminderForm.Designer.cs">
       <DependentUpon>UpdateReminderForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserManagementForm.cs">
+    <Compile Include="Design\UserManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserManagementForm.Designer.cs">
+    <Compile Include="Design\UserManagementForm.Designer.cs">
       <DependentUpon>UserManagementForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddReminderForm.resx">
+    <EmbeddedResource Include="Design\AddReminderForm.resx">
       <DependentUpon>AddReminderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NotesForm.resx">
+    <EmbeddedResource Include="Design\NotesForm.resx">
       <DependentUpon>NotesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PhoneBookForm.resx">
+    <EmbeddedResource Include="Design\PhoneBookForm.resx">
       <DependentUpon>PhoneBookForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PersonalInformation.resx">
+    <EmbeddedResource Include="Design\PersonalInformation.resx">
       <DependentUpon>PersonalInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -139,18 +151,26 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ReminderForm.resx">
+    <EmbeddedResource Include="Design\ReminderForm.resx">
       <DependentUpon>ReminderForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SalaryCalculatorForm.resx">
+    <EmbeddedResource Include="Design\SalaryCalculatorForm.resx">
       <DependentUpon>SalaryCalculatorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateReminderForm.resx">
+    <EmbeddedResource Include="Design\UpdateReminderForm.resx">
       <DependentUpon>UpdateReminderForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserManagementForm.resx">
+    <EmbeddedResource Include="Design\UserManagementForm.resx">
       <DependentUpon>UserManagementForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bin\Debug\Csvler\notlar.csv" />
+    <None Include="bin\Debug\Csvler\user_data.csv" />
+    <None Include="bin\Debug\Csvler\veriler.csv" />
+    <None Include="bin\Debug\CSV\reminder.csv" />
+    <None Include="bin\Debug\PersonalOrganizerApp.exe.config" />
+    <None Include="bin\Debug\reminder.csv" />
+    <None Include="bin\Debug\user_salary_data.csv" />
+    <None Include="CSV\user_salary_data.csv" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -160,15 +180,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="reminder.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="user_salary_data.csv">
+    <None Include="CSV\reminder.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\PersonalOrganizerApp.exe" />
+    <Content Include="bin\Debug\PersonalOrganizerApp.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
