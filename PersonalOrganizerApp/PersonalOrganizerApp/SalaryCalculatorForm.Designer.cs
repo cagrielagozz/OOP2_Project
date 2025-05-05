@@ -153,13 +153,14 @@
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnCalculate.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnCalculate.Location = new System.Drawing.Point(609, 423);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(300, 75);
             this.btnCalculate.TabIndex = 10;
             this.btnCalculate.Text = "Calculate";
-            this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.UseVisualStyleBackColor = false;
             this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // lblResult
@@ -178,7 +179,7 @@
             this.lblAile.Name = "lblAile";
             this.lblAile.Size = new System.Drawing.Size(187, 35);
             this.lblAile.TabIndex = 12;
-            this.lblAile.Text = "Aile Durumu";
+            this.lblAile.Text = "Family Status";
             this.lblAile.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // lblDil
@@ -186,9 +187,9 @@
             this.lblDil.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblDil.Location = new System.Drawing.Point(16, 17);
             this.lblDil.Name = "lblDil";
-            this.lblDil.Size = new System.Drawing.Size(207, 35);
+            this.lblDil.Size = new System.Drawing.Size(226, 35);
             this.lblDil.TabIndex = 13;
-            this.lblDil.Text = "Yabancı Dil Bilgisi";
+            this.lblDil.Text = "Foreign Language";
             this.lblDil.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // lblDeneyim
@@ -198,7 +199,7 @@
             this.lblDeneyim.Name = "lblDeneyim";
             this.lblDeneyim.Size = new System.Drawing.Size(186, 43);
             this.lblDeneyim.TabIndex = 14;
-            this.lblDeneyim.Text = "Deneyim";
+            this.lblDeneyim.Text = "Experience";
             this.lblDeneyim.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // lblil
@@ -206,9 +207,9 @@
             this.lblil.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblil.Location = new System.Drawing.Point(285, 191);
             this.lblil.Name = "lblil";
-            this.lblil.Size = new System.Drawing.Size(182, 37);
+            this.lblil.Size = new System.Drawing.Size(289, 37);
             this.lblil.TabIndex = 15;
-            this.lblil.Text = "Yaşanılan İl";
+            this.lblil.Text = "Province of Residence";
             this.lblil.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // lblOgrenim
@@ -218,7 +219,7 @@
             this.lblOgrenim.Name = "lblOgrenim";
             this.lblOgrenim.Size = new System.Drawing.Size(219, 44);
             this.lblOgrenim.TabIndex = 16;
-            this.lblOgrenim.Text = "Üst Öğrenim";
+            this.lblOgrenim.Text = "Education";
             this.lblOgrenim.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // cmbManagementRole
@@ -235,9 +236,9 @@
             this.lblYoneticilik.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblYoneticilik.Location = new System.Drawing.Point(845, 191);
             this.lblYoneticilik.Name = "lblYoneticilik";
-            this.lblYoneticilik.Size = new System.Drawing.Size(222, 36);
+            this.lblYoneticilik.Size = new System.Drawing.Size(250, 36);
             this.lblYoneticilik.TabIndex = 18;
-            this.lblYoneticilik.Text = "Yöneticilik Görevi";
+            this.lblYoneticilik.Text = "Management Role";
             this.lblYoneticilik.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // panel1
@@ -270,7 +271,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1012, 137);
             this.label1.TabIndex = 21;
-            this.label1.Text = "Bilgisayar Mühendisleri Odası (BMO)\r\nEn Az Brüt Ücret Hesaplama";
+            this.label1.Text = "Bilgisayar Mühendisleri Odası (BMO)\r\nCalculating Minimum Gross Wage";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SalaryCalculatorForm
