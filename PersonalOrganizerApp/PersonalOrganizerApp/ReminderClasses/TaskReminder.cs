@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace PersonalOrganizerApp.ReminderClasses
 {
+    // Represents a task-type reminder.
+    // Inherits from ReminderBase and overrides its behavior specific to tasks.
     public class TaskReminder : ReminderBase
     {
+        // Specifies the type of the reminder. Default is Task.
         public override ReminderType Type { get; set; } = ReminderType.Task;
 
+        // Executes the custom notification logic for a task.
         public override void Notify()
         {
-            // Task için özel bildirim davranışı
+            // Sets the console title to a formatted message indicating a task reminder.
             string message = $"[TASK] {Summary}";
             Console.Title = message;
-
-            // Active form'u salla ve başlığı değiştir (Observer tarafından yapılacak)
         }
     }
 }

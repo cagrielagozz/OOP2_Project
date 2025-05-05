@@ -7,11 +7,12 @@ using PersonalOrganizerApp.ReminderClasses;
 
 namespace PersonalOrganizerApp.ReminderClasses
 {
+    /// Manages the loading and saving of reminders to a CSV file.
     internal class ReminderCsvManager
     {
         private static readonly string filePath = "reminder.csv";
 
-        // CSV'ye yeni bir reminder ekler (ekleme işlemi için)
+        // Creates the CSV file if it doesn't exist
         public static void SaveReminder(string username, IReminder reminder)
         {
             string csvLine = string.Join(",",
@@ -26,7 +27,7 @@ namespace PersonalOrganizerApp.ReminderClasses
             File.AppendAllText(filePath, csvLine + Environment.NewLine);
         }
 
-        // Belirli kullanıcıya ait tüm reminder'ları yükler
+        // Loads reminders from the CSV file for a specific user
         public static List<IReminder> LoadReminders(string username)
         {
             var reminders = new List<IReminder>();
@@ -34,7 +35,7 @@ namespace PersonalOrganizerApp.ReminderClasses
             if (!File.Exists(filePath))
                 return reminders;
 
-            var lines = File.ReadAllLines(filePath); // Başlık yoksa Skip(1) gereksiz
+            var lines = File.ReadAllLines(filePath);
 
             foreach (var line in lines)
             {
@@ -43,6 +44,7 @@ namespace PersonalOrganizerApp.ReminderClasses
                 if (parts.Length < 7 || parts[0] != username)
                     continue;
 
+                // Parse the reminder type
                 ReminderType type = (ReminderType)Enum.Parse(typeof(ReminderType), parts[1]);
 
                 IReminderFactory factory;
@@ -65,17 +67,17 @@ namespace PersonalOrganizerApp.ReminderClasses
             return reminders;
         }
 
-        // Tüm kullanıcıya ait reminder listesini dosyaya yazar (güncelleme ve silme sonrası)
+        // Saves all reminders for a specific user to the CSV file
         public static void SaveAllReminders(List<IReminder> updatedList, string username)
         {
             var allLines = File.Exists(filePath)
                 ? File.ReadAllLines(filePath).ToList()
                 : new List<string>();
 
-            // Eski kullanıcı satırlarını sil
+            // Remove existing lines for the user
             allLines = allLines.Where(line => line.Split(',')[0] != username).ToList();
 
-            // Yeni listeyi satır satır ekle
+            // Create new lines for the updated list
             foreach (var reminder in updatedList)
             {
                 string line = string.Join(",",
@@ -90,7 +92,7 @@ namespace PersonalOrganizerApp.ReminderClasses
                 allLines.Add(line);
             }
 
-            // Dosyaya tüm satırları tekrar yaz
+            // Write all lines back to the file
             File.WriteAllLines(filePath, allLines);
         }
     }

@@ -7,13 +7,17 @@ using System.Windows.Forms;
 
 namespace PersonalOrganizerApp.ReminderClasses
 {
+    // Observer class that triggers a visual shake effect on the form when notified.
+    // Implements the IReminderObserver interface.
     public class ShakeObserver : IReminderObserver
     {
         public void Update(IReminder reminder)
         {
-            // Şu an için bir şey yapmıyoruz (gerekirse genişletilir)
         }
 
+        // Triggers a shake animation on the given form and updates the form's title.
+        // <param name="form">The Windows Form to apply the shake effect.</param>
+        // <param name="reminder">The reminder that triggered the notification.</param>
         public void Notify(Form form, IReminder reminder)
         {
             if (form == null || form.WindowState == FormWindowState.Minimized)
@@ -21,9 +25,9 @@ namespace PersonalOrganizerApp.ReminderClasses
 
             var originalLocation = form.Location;
 
-            int shakeAmplitude = 10;
-            int shakeCount = 10;
-            int shakeDelay = 20;
+            int shakeAmplitude = 10;    // How far the form shakes left and right
+            int shakeCount = 10;        // Number of shakes
+            int shakeDelay = 20;        // Delay between shakes in milliseconds
 
             Task.Run(() =>
             {
@@ -39,9 +43,10 @@ namespace PersonalOrganizerApp.ReminderClasses
                     System.Threading.Thread.Sleep(shakeDelay);
                 }
 
+                // Restore the original position
                 form.Invoke((Action)(() => form.Location = originalLocation));
 
-                // Başlığı güncelle
+                // Update the form title to display the reminder
                 form.Invoke((Action)(() =>
                 {
                     form.Text = $"🔔 {reminder.Summary}";
