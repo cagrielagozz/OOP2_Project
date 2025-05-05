@@ -12,15 +12,21 @@ using PersonalOrganizerApp.ReminderClasses;
 
 namespace PersonalOrganizerApp
 {
+
     public partial class ReminderForm : Form
     {
+        // List to store reminders
         private List<IReminder> reminders = new List<IReminder>();
+
+        // Notifier instance for handling reminder notifications
         private ReminderNotifier notifier = new ReminderNotifier();
 
 
         public ReminderForm()
         {
             InitializeComponent();
+
+            // Bind event handlers for UI buttons
             this.Load += ReminderForm_Load;
             btnShowAll.Click += btnShowAll_Click;
             btnFilterMeeting.Click += btnFilterMeeting_Click;
@@ -28,13 +34,18 @@ namespace PersonalOrganizerApp
             btnDeleteReminder.Click += btnDeleteReminder_Click;
             btnAddReminder.Click += btnAddReminder_Click;
             btnUpdateReminder.Click += btnUpdateReminder_Click;
+
+            // Attach observer for notification behavior
             notifier.Attach(new ShakeObserver());
+
+            // Load user-specific reminders from CSV
             reminders = ReminderCsvManager.LoadReminders("user1");
 
         }
 
         private void ReminderForm_Load(object sender, EventArgs e)
         {
+            // Initialize DataGridView columns
             dgvReminders.Columns.Add("Title", "Title");
             dgvReminders.Columns.Add("Description", "Description");
             dgvReminders.Columns.Add("Summary", "Summary");
@@ -45,10 +56,13 @@ namespace PersonalOrganizerApp
             dgvReminders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvReminders.MultiSelect = false;
 
+            // Reload reminders on form load
             reminders = ReminderCsvManager.LoadReminders("user1");
-            RefreshGrid(reminders); // veya RefreshGrid(reminders); varsa
+            RefreshGrid(reminders);
         }
 
+
+        // Refresh the DataGridView with the provided list of reminders
         private void RefreshGrid(List<IReminder> list)
         {
             dgvReminders.Rows.Clear();
@@ -65,23 +79,31 @@ namespace PersonalOrganizerApp
             }
         }
 
+
+        // Show all reminders in the DataGridView
         private void btnShowAll_Click(object sender, EventArgs e)
         {
             RefreshGrid(reminders);
         }
 
+
+        // Filter reminders by type and refresh the DataGridView
         private void btnFilterMeeting_Click(object sender, EventArgs e)
         {
             var filtered = reminders.Where(r => r.Type == ReminderType.Meeting).ToList();
             RefreshGrid(filtered);
         }
 
+
+        // Filter reminders by type and refresh the DataGridView
         private void btnFilterTask_Click(object sender, EventArgs e)
         {
             var filtered = reminders.Where(r => r.Type == ReminderType.Task).ToList();
             RefreshGrid(filtered);
         }
 
+
+        // Delete the selected reminder from the list and update the CSV file
         private void btnDeleteReminder_Click(object sender, EventArgs e)
         {
             if (dgvReminders.SelectedRows.Count > 0)
@@ -92,7 +114,7 @@ namespace PersonalOrganizerApp
                 {
                     reminders.Remove(itemToRemove);
 
-                    // Güncellenmiş listeyi CSV'ye yaz
+                    // Update the CSV file after deletion
                     ReminderCsvManager.SaveAllReminders(reminders, "user1");
 
                     RefreshGrid(reminders);
@@ -104,6 +126,8 @@ namespace PersonalOrganizerApp
             }
         }
 
+
+        // Add a new reminder using the AddReminderForm
         private void btnAddReminder_Click(object sender, EventArgs e)
         {
             AddReminderForm addForm = new AddReminderForm(reminders);
@@ -123,6 +147,7 @@ namespace PersonalOrganizerApp
         }
 
 
+        // Update the selected reminder using the UpdateReminderForm
         private void btnUpdateReminder_Click(object sender, EventArgs e)
         {
             if (dgvReminders.SelectedRows.Count > 0)
@@ -134,7 +159,7 @@ namespace PersonalOrganizerApp
                     UpdateReminderForm updateForm = new UpdateReminderForm(selectedReminder);
                     updateForm.FormClosed += (s, args) =>
                     {
-                        // CSV'yi güncelle
+                        // Update the reminder list and refresh the DataGridView
                         ReminderCsvManager.SaveAllReminders(reminders, "user1");
                         RefreshGrid(reminders);
                     };
