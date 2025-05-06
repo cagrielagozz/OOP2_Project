@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
 using PersonalOrganizerApp;
+using PersonalOrganizerApp.Design;
 
 namespace PersonalOrganizerApp
 {
@@ -54,6 +55,12 @@ namespace PersonalOrganizerApp
         {
             ReminderForm reminderForm = new ReminderForm();
             reminderForm.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
         }
     }
 }

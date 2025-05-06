@@ -16,32 +16,32 @@ namespace PersonalOrganizerApp.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public string Base64Photo { get; set; }
+        public bool RememberMe { get; set; }
+        public string UserTypes { get; set; }
+
+        // Add the IsValid method to resolve the CS1061 error  
+        public bool IsValid(string username, string password, bool rememberMe)
+        {
+            return this.Username == username && this.Password == password;
+        }
 
         public User Clone()
         {
-            return new User
-            {
-                Username = this.Username,
-                Name = this.Name,
-                Surname = this.Surname,
-                PhoneNumber = this.PhoneNumber,
-                Address = this.Address,
-                Email = this.Email,
-                Password = this.Password,
-                Base64Photo = this.Base64Photo
-            };
+            return (User)this.MemberwiseClone();
         }
 
         public void CopyFrom(User other)
         {
-            Username = other.Username;
-            Name = other.Name;
-            Surname = other.Surname;
-            PhoneNumber = other.PhoneNumber;
-            Address = other.Address;
-            Email = other.Email;
-            Password = other.Password;
-            Base64Photo = other.Base64Photo;
+            this.Username = other.Username;
+            this.Name = other.Name;
+            this.Surname = other.Surname;
+            this.PhoneNumber = other.PhoneNumber;
+            this.Address = other.Address;
+            this.Email = other.Email;
+            this.Password = other.Password;
+            this.Base64Photo = other.Base64Photo;
+            this.RememberMe = other.RememberMe;
+            this.UserTypes = other.UserTypes;
         }
     }
 
